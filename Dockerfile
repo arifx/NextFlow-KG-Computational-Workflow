@@ -4,7 +4,7 @@ FROM python:3.9.13-slim-buster
 LABEL description="runtime environment for KG process of CSV and xlsx datasets using Nextflow."
 
 #Add the python script to the root.
-ADD KG-Process.py /
+ADD ./processes/KG-Process.py /
 ADD requirements.txt /
 
 
