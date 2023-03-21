@@ -21,6 +21,8 @@ for row in sheet.iter_rows(min_row=2, values_only=True):
             object = ex[object_uri]
             g.add((subject, predicate, object))
 
+
 f = open("FoodSafetyMonitoringKG.json", "w")
-f.write("KG here")
+v = g.serialize(format="json-ld").decode('utf-8')
+f.write(v)
 f.close()
