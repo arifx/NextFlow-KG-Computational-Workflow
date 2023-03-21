@@ -23,7 +23,7 @@ process runKGProcess {
     """
       echo 'script executing...'
       pwd
-      python3 $scriptFile $inputPath pca.json
+      python3 $scriptFile $inputPath test.xlsx
     """
 }
 
@@ -47,6 +47,6 @@ process copyFile {
 workflow {
   data = channel.fromPath(input_path)
   script_file = channel.fromPath("${projectDir}/python/KG-process.py")
-  kgResultfile = processInputFile(data, script_file) 
+  kgResultfile = runKGProcess(data, script_file) 
   copyFile(kgResultfile, file_name)
 }
