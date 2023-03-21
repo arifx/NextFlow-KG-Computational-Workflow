@@ -2,12 +2,13 @@ nextflow.enable.dsl=2
 
 input_path = params.input_path
 //publishTo = params.publish_to
+projectDir = params.project_dir
 output_directory = params.output_path
 file_name = params.file_name
+kg_name = params.kg_name
 
 
 process runKGProcess {
-  label 'cleanup_enabled'
   input:
   path inputPath
   path scriptFile
@@ -22,8 +23,8 @@ process runKGProcess {
   script:
     """
       echo 'script executing...'
-      pwd
-      python3 $scriptFile $inputPath test.xlsx
+      echo \$(pwd)
+      python3 /home/user/Documents/projects/NextFlow-KG-Computational-Workflow/processes/KG-Process.py $inputPath 'FoodSafetyMonitoringKG.json'
     """
 }
 
@@ -46,7 +47,7 @@ process copyFile {
 
 workflow {
   data = channel.fromPath(input_path)
-  script_file = channel.fromPath("${projectDir}/python/KG-process.py")
+  script_file = channel.fromPath("${projectDir}KG-process.py")
   kgResultfile = runKGProcess(data, script_file) 
   copyFile(kgResultfile, file_name)
 }
