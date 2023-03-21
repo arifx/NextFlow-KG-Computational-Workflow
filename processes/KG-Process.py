@@ -20,3 +20,7 @@ for row in sheet.iter_rows(min_row=2, values_only=True):
             object_uri = row[i]
             object = ex[object_uri]
             g.add((subject, predicate, object))
+
+f = open("FoodSafetyMonitoringKG.json", "w")
+f.write("KG here")
+f.close()
