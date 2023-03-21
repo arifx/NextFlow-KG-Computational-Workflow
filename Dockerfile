@@ -1,10 +1,10 @@
 FROM python:3.9.13-slim-buster
 
 ####METADATA####
-LABEL description="runtime environment for PCA analysis of CSV datasets using Nextflow."
+LABEL description="runtime environment for KG process of CSV and xlsx datasets using Nextflow."
 
 #Add the python script to the root.
-ADD pca.py /
+ADD KG-Process.py /
 ADD requirements.txt /
 
 
