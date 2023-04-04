@@ -16,7 +16,7 @@ for row in sheet.iter_rows(min_row=2, values_only=True):
 
     for i in range(2, len(row)):
         if row[i]:
-            predicate = ex[f'hasConnection{i-1}']
+            predicate = ex[f'hasConection{i-1}']
             object_uri = row[i]
             object = ex[object_uri]
             g.add((subject, predicate, object))
@@ -26,3 +26,4 @@ f = open("FoodSafetyMonitoringKG.json", "w")
 v = g.serialize(format="json-ld").decode('utf-8')
 f.write(v)
 f.close()
+

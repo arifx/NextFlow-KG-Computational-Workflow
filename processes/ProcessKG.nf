@@ -8,6 +8,7 @@ file_name = params.file_name
 kg_name = params.kg_name
 
 
+
 process runKGProcess {
   input:
   path inputPath
