@@ -4,7 +4,6 @@ FROM python:3.9.13-slim-buster
 LABEL description="runtime environment for KG process of CSV and xlsx datasets using Nextflow."
 
 #Add the python script to the root.
-ADD ./processes/KG-Process.py /
 ADD requirements.txt /
 
 
@@ -19,4 +18,3 @@ RUN useradd -u ${uid} -g ${group} -s /bin/sh -m ${user} # <--- the '-m' creates 
 # Switch to user
 USER ${uid}:${gid}
 RUN pip install -r requirements.txt
-RUN pip install "scikit-learn"
