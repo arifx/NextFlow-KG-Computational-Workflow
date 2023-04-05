@@ -10,6 +10,7 @@ kg_name = params.kg_name
 
 
 process runKGProcess {
+  containerOptions "--user root -v /home/appuser/NextFlow-KG-Computational-Workflow/processes:/processes"
   input:
   path inputPath
   path scriptFile
