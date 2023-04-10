@@ -14,7 +14,7 @@ if 1==1:
 #for row in sheet.iter_rows(min_row=2, values_only=True):
     subject_uri = ex['Dataset'] #row[0].value
     subject_name =  fname  #row[1].value
-    subject = ex[subject_uri]
+    subject = ex['Dataset']
     g.add((subject, RDF.type, Literal("Dataset" )))
     g.add((ex["Datetime"], RDF.type, Literal(str(datetime.datetime.now() ))))
     g.add((subject, ex['hasDatasetName'], Literal(str(subject_name))))
