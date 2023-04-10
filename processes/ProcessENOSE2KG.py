@@ -17,7 +17,7 @@ if 1==1:
     g.add((subject, RDF.type, ex[row[0]]))
     g.add((subject, ex['hasDatasetName'], Literal(subject_name)))
 
-    for i in range(2, len(row)):
+    for i in range(0, len(row)):
         if row[i]:
             #predicate = ex[f'hasMeasurementType{i-1}']
             predicate = ex[f'hasMeasurementType']
