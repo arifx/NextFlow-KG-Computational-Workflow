@@ -49,7 +49,8 @@ process copyFile {
 
 workflow {
   data = channel.fromPath(input_path)
-  script_file = channel.fromPath("${projectDir}KG-process.py")
+  //script_file = channel.fromPath("${projectDir}KG-process.py")
+  script_file = channel.fromPath("${projectDir}ProcessENOSE2KG.py")
   kgResultfile = runKGProcess(data, script_file) 
   copyFile(kgResultfile, file_name)
 }
