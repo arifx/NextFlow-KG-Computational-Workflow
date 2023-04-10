@@ -20,7 +20,7 @@ if 1==1:
     g.add((subject, ex['hasDatasetName'], Literal(str(subject_name))))
     g.add((Literal("Location" ), RDF.type, Literal(str("50.850741597 5.6877722489"))))
 
-    for i in range(0, len(row)):
+    for i in range(1, len(row)):
         if row[i]:
             #predicate = ex[f'hasMeasurementType{i-1}']
             predicate = ex[f'hasMeasurementType']
