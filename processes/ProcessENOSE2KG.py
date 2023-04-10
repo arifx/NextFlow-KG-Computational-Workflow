@@ -8,7 +8,7 @@ wb = load_workbook('/home/appuser/NextFlow-KG-Computational-Workflow/ENOSE.xlsx'
 sheet = wb['Sheet1']
 if 1==1:
     row= sheet[1]
-    print(str(row)s
+    print(str(row))
 #for row in sheet.iter_rows(min_row=2, values_only=True):
     subject_uri = row[0]
     subject_name = row[1]
