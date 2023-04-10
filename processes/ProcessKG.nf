@@ -26,7 +26,7 @@ process runKGProcess {
     """
       echo 'NF script executing...'
       echo \$(pwd)
-      python3 /home/user/Documents/projects/NextFlow-KG-Computational-Workflow/processes/KG-Process.py $inputPath 'FoodSafetyMonitoringKG.json'
+      python3 /home/appuser/NextFlow-KG-Computational-Workflow/processes/KG-Process.py $inputPath 'FoodSafetyMonitoringKG.json'
     """
 }
 
