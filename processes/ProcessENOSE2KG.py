@@ -6,8 +6,9 @@ ex = Namespace('http://purl.com/fsmon#')
 g = Graph()
 wb = load_workbook('/home/appuser/NextFlow-KG-Computational-Workflow/ENOSE.xlsx')
 sheet = wb['Sheet1']
-
-for row in sheet.iter_rows(min_row=2, values_only=True):
+if 1==1:
+    row= sheet[1]
+#for row in sheet.iter_rows(min_row=2, values_only=True):
     subject_uri = row[0]
     subject_name = row[1]
     subject = ex[subject_uri]
@@ -16,7 +17,7 @@ for row in sheet.iter_rows(min_row=2, values_only=True):
 
     for i in range(2, len(row)):
         if row[i]:
-            predicate = ex[f'hasConnection{i-1}']
+            predicate = ex[f'hasMeasurementType{i-1}']
             object_uri = row[i]
             object = ex[object_uri]
             g.add((subject, predicate, object))
