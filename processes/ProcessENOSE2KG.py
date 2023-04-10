@@ -11,7 +11,7 @@ if 1==1:
     row= list(sheet.rows)[0]
     print(str(row))
 #for row in sheet.iter_rows(min_row=2, values_only=True):
-    subject_uri = row[0].value
+    subject_uri = ex['Dataset'] #row[0].value
     subject_name =  fname  #row[1].value
     subject = ex[subject_uri]
     g.add((subject, RDF.type, ex[row[0]]))
