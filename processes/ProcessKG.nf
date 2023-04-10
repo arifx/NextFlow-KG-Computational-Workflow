@@ -24,9 +24,9 @@ process runKGProcess {
   debug true  
   script:
     """
-      echo 'script executing...'
+      echo 'NF script executing...'
       echo \$(pwd)
-      pip3 install -r requirements.txt
+      //pip3 install -r /requirements.txt
       python3 /home/user/Documents/projects/NextFlow-KG-Computational-Workflow/processes/KG-Process.py $inputPath 'FoodSafetyMonitoringKG.json'
     """
 }
