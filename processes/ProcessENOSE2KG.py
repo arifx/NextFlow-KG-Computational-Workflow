@@ -14,7 +14,7 @@ if 1==1:
     subject_uri = ex['Dataset'] #row[0].value
     subject_name =  fname  #row[1].value
     subject = ex[subject_uri]
-    g.add((subject, RDF.type, ex[row[0]]))
+    g.add((subject, RDF.type,subject ]))
     g.add((subject, ex['hasDatasetName'], Literal(subject_name)))
 
     for i in range(0, len(row)):
