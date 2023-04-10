@@ -1,6 +1,7 @@
 from rdflib import Graph, Namespace, Literal
 from openpyxl import load_workbook
 from rdflib.namespace import RDF, RDFS
+import datetime
 
 ex = Namespace('http://purl.com/fsmon#')
 g = Graph()
@@ -15,6 +16,7 @@ if 1==1:
     subject_name =  fname  #row[1].value
     subject = ex[subject_uri]
     g.add((subject, RDF.type, Literal("Dataset" )))
+    g.add((Literal("Date" ), RDF.type, Literal(str(datetime.datetime.now ))))
     g.add((subject, ex['hasDatasetName'], Literal(str(subject_name))))
 
     for i in range(0, len(row)):
