@@ -5,7 +5,7 @@ from rdflib.namespace import RDF, RDFS
 ex = Namespace('http://purl.com/fsmon#')
 g = Graph()
 wb = load_workbook('/home/appuser/NextFlow-KG-Computational-Workflow/ENOSE.xlsx')
-sheet = wb['Requested Info']
+sheet = wb['Sheet1']
 
 for row in sheet.iter_rows(min_row=2, values_only=True):
     subject_uri = row[0]
