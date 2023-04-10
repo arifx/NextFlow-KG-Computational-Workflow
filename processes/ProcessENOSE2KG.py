@@ -4,7 +4,7 @@ from rdflib.namespace import RDF, RDFS
 
 ex = Namespace('http://purl.com/fsmon#')
 g = Graph()
-wb = load_workbook('../ENOSE.xlsx')
+wb = load_workbook('/home/appuser/NextFlow-KG-Computational-Workflow/ENOSE.xlsx')
 sheet = wb['Requested Info']
 
 for row in sheet.iter_rows(min_row=2, values_only=True):
