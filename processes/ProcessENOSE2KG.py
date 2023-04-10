@@ -18,7 +18,7 @@ if 1==1:
     g.add((subject, RDF.type, Literal("Dataset" )))
     g.add((ex["Datetime"], RDF.type, Literal(str(datetime.datetime.now() ))))
     g.add((subject, ex['hasDatasetName'], Literal(str(subject_name))))
-    g.add((ex["Location"] ), RDF.type, Literal(str("50.850741597 5.6877722489")))
+    g.add(((ex["Location"] ), RDF.type, Literal(str("50.850741597 5.6877722489"))))
 
     for i in range(1, len(row)):
         if row[i]:
