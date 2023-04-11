@@ -15,8 +15,8 @@ ARG uid=1000
 ARG gid=1000
 RUN groupadd -g ${gid} ${group}
 RUN useradd -u ${uid} -g ${group} -s /bin/sh -m ${user} # <--- the '-m' creates a user home directory
-
-# Switch to user
-USER ${uid}:${gid}
 RUN pip install -r requirements.txt
 RUN pip install "scikit-learn"
+# Switch to user
+USER ${uid}:${gid}
+
