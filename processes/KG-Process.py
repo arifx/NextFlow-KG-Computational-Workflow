@@ -23,7 +23,7 @@ for row in sheet.iter_rows(min_row=2, values_only=True):
 
 
 f = open("FoodSafetyMonitoringKG.json", "w")
-v = g.serialize(format="json-ld").decode('utf-8')
+v = g.serialize()
 f.write(v)
 f.close()
 
