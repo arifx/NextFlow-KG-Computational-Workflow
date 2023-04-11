@@ -27,4 +27,4 @@ for row in sheet.iter_rows(min_row=2, values_only=True):
             g.add((subject, predicate, object))
 
 
-g.serialize(destination=output_file)
+g.serialize(destination=output_file, format='json-ld')
