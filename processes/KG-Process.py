@@ -1,10 +1,15 @@
 from rdflib import Graph, Namespace, Literal
 from openpyxl import load_workbook
 from rdflib.namespace import RDF, RDFS
+import sys
+
+input_file = sys.argv[1]
+output_file = sys.argv[2]
 
 ex = Namespace('http://purl.com/ditect#')
 g = Graph()
-wb = load_workbook('test.xlsx')
+print("Value of input is: "+input_file)
+wb = load_workbook(filename=str(input_file))
 sheet = wb['Requested Info']
 
 for row in sheet.iter_rows(min_row=2, values_only=True):
@@ -22,8 +27,4 @@ for row in sheet.iter_rows(min_row=2, values_only=True):
             g.add((subject, predicate, object))
 
 
-f = open("FoodSafetyMonitoringKG.json", "w")
-v = g.serialize()
-f.write(v)
-f.close()
-
+g.serialize(destination=output_file, format='json-ld')

@@ -25,6 +25,7 @@ process runKGProcess {
       echo 'script executing...'
       echo \$(pwd)
       python3 -W ignore $scriptFile $inputPath ${fileName}
+
     """
 }
 
