@@ -12,7 +12,13 @@ if 1==1:
     row= list(sheet.rows)[0]
     print(str(row))
 #for row in sheet.iter_rows(min_row=2, values_only=True):
-    subject_uri = ex['Dataset'] #row[0].value
+      subject_uri = ex['Dataset'] #row[0].value
+    subjectsample = ex['Sample']
+    subject_name =  fname  #row[1].value
+    subject = ex['Dataset']
+    g.add((subject, RDF.type, Literal("Dataset" )))
+    g.add((subjectsample, ex[f'hasDataset'], subject ))
+
     subject_name =  fname  #row[1].value
     subject = ex['Dataset']
     g.add((subject, RDF.type, Literal("Dataset" )))
@@ -21,7 +27,6 @@ if 1==1:
     g.add(((ex["Location"] ), RDF.type, Literal(str("50.850741597 5.6877722489"))))
     g.add(((ex["SampleType"] ), RDF.type, Literal(str("ChickenFillet"))))
     for i in range(1, len(row)):
-        if row[i]:
             #predicate = ex[f'hasMeasurementType{i-1}']
             predicate = ex[f'hasMeasurementType']
             object_uri = row[i].value
