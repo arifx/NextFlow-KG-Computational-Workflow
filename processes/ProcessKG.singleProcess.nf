@@ -7,7 +7,8 @@ outputName = params.output_name
 
 
 process runKGProcess {
-  
+   containerOptions "--user root -v /home/appuser/NextFlow-KG-Computational-Workflow/processes:/processes"
+ 
   // label 'cleanup_enabled'
   publishDir "${outputDir}", mode: 'move'
 
