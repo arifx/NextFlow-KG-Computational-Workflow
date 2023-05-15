@@ -1,3 +1,15 @@
+curl -s https://get.nextflow.io | bash
+mv nextflow /usr/local/bin/
+nextflow -version
+pip install rdflib
+mkdir result/
+mkdir result/KG
+mkdir result/KG/FTIR
+mkdir result/KG/MSI
+mkdir result/KG/MSIF
+mkdir result/KG/freshdetect
+mkdir result/KG/enose
+mkdir result/copy
 nextflow run ./KG_script/MSI-process-KG.nf \
 --input_folder dataset/ \
 --runKG_output_folder result/KG/MSI/ \
