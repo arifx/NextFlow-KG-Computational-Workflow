@@ -42,6 +42,6 @@ nextflow run ./KG_script/enose-process-KG.nf \
 --input_folder dataset/ \
 --runKG_output_folder result/KG/enose/ \
 --main_kg reasoner/ditect-fso-satisfiable.owl \
---merge_output_path result/full_freshdetect_kg.owl \
+--merge_output_path result/full_enose_kg.owl \
 --script_dir KG_script \
 --copy_output_path result/copy
