@@ -24,7 +24,7 @@ process mergeKG {
         input_files+="\"\$file\" "
       fi
     done < <(find $runKG_output_folder -type f -print0)
-    python3 $merge_script_file --input \$input_files "$main_kg" --output "${merge_output_path}"
+    python3 $merge_script_file --input \$input_files --output "${merge_output_path}"
   """
 }
 
