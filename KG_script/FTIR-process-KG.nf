@@ -30,7 +30,8 @@ process runKGProcess {
 
 process mergeKG {
   label 'cleanup_enabled'
-  input: 
+  input:
+  val runKG_output_folder 
   val merge_script_file
   val main_kg
   
@@ -40,12 +41,13 @@ process mergeKG {
   script:
   """
     input_files=""
-    find "$runKG_output_folder" -type f | while read -r file; do
-      if [[ "\$file" == *"FTIR"* ]]; then  
-        input_files+=" \"\$file\" "
+    while IFS= read -r -d '' file; do
+      if [[ "\$file" == *"FTIR"* ]]; then
+        # Add file to the input_files variable
+        input_files+="\"\$file\" "
       fi
-    done
-    python3 $merge_script_file --input \$input_files "${main_kg}" --output "${merge_output_path}"
+    done < <(find $runKG_output_folder -type f -print0)
+    python3 $merge_script_file --input \$input_files "$main_kg" --output "${merge_output_path}"
   """
 }
 
@@ -66,7 +68,7 @@ workflow {
   data = input_folder
   script_file = "$script_dir/FTIR-process-KG.py"
   merge_script_file = "$script_dir/Merge-KG.py"
-  runKGProcess(data, script_file) 
-  mergeResult = mergeKG(merge_script_file, main_kg)
+  kg = runKGProcess(data, script_file) 
+  mergeResult = mergeKG(kg, merge_script_file, main_kg)
   copyFile(mergeResult, copy_output_path)
 }

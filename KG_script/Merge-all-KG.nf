@@ -8,7 +8,8 @@ copy_output_path = "${baseDir}/${params.copy_output_path}"
 
 process mergeKG {
   label 'cleanup_enabled'
-  input: 
+  input:
+  val runKG_output_folder 
   val merge_script_file
   
   output:
@@ -17,12 +18,13 @@ process mergeKG {
   script:
   """
     input_files=""
-    find "$runKG_output_folder" -type f | while read -r file; do
-      if [[ "\$file" == *"full"* ]]; then  
-        input_files+=" \"\$file\" "
+    while IFS= read -r -d '' file; do
+      if [[ "\$file" == *"full"* ]]; then
+        # Add file to the input_files variable
+        input_files+="\"\$file\" "
       fi
-    done
-    python3 $merge_script_file --input \$input_files--output "${merge_output_path}"
+    done < <(find $runKG_output_folder -type f -print0)
+    python3 $merge_script_file --input \$input_files "$main_kg" --output "${merge_output_path}"
   """
 }
 
@@ -40,7 +42,8 @@ process copyFile {
 
 
 workflow {
+  kg = runKG_output_folder
   merge_script_file = "$script_dir/Merge-KG.py"
-  mergeResult = mergeKG(merge_script_file)
+  mergeResult = mergeKG(kg, merge_script_file)
   copyFile(mergeResult, copy_output_path)
 }
