@@ -33,6 +33,7 @@ inp = input_path.split("/")
 dataset_name = inp[-1]
 folder = inp[:-1]
 file_uri = input_path.replace(" ","_")
+file_uri = file_uri.replace("/content/drive/MyDrive/23_FoodSafety/dataset", "FSM_fileRepository")
 g = Graph()
 g.bind("saref", saref)
 g.bind("om2", om2)
@@ -57,6 +58,26 @@ g.add((URIRef(fsmon+file_uri), RDF.type, URIRef(obo+"NCIT_C42778")))
 g.add((URIRef(fsmon+file_uri), URIRef(fsmon+"name"), Literal(str(file_uri))))
 g.add((URIRef(fsmon+dataset_name.replace(" ","_")), URIRef(fsmon+"has_format"), Literal(format_))) 
 g.add((URIRef(obo+"CHMO_0000937"), URIRef(saref+"isMeasuredByDevice"), URIRef(fsmon+"Videometer"))) #Reflectance
+g.add((URIRef(obo+"CHMO_0000937"), URIRef(saref+"isMeasuredByDevice"), URIRef(fsmon+"Videometer_0000"))) #Reflectance
+g.add((URIRef(obo+"CHMO_0000937"), URIRef(saref+"isMeasuredByDevice"), URIRef(fsmon+"Videometer_0001"))) 
+g.add((URIRef(obo+"CHMO_0000937"), URIRef(saref+"isMeasuredByDevice"), URIRef(fsmon+"Videometer_0002"))) 
+g.add((URIRef(obo+"CHMO_0000937"), URIRef(saref+"isMeasuredByDevice"), URIRef(fsmon+"Videometer_0003"))) 
+g.add((URIRef(obo+"CHMO_0000937"), URIRef(saref+"isMeasuredByDevice"), URIRef(fsmon+"Videometer_0004"))) 
+g.add((URIRef(obo+"CHMO_0000937"), URIRef(saref+"isMeasuredByDevice"), URIRef(fsmon+"Videometer_0005"))) 
+g.add((URIRef(obo+"CHMO_0000937"), URIRef(saref+"isMeasuredByDevice"), URIRef(fsmon+"Videometer_0006"))) 
+g.add((URIRef(obo+"CHMO_0000937"), URIRef(saref+"isMeasuredByDevice"), URIRef(fsmon+"Videometer_0007"))) 
+g.add((URIRef(obo+"CHMO_0000937"), URIRef(saref+"isMeasuredByDevice"), URIRef(fsmon+"Videometer_0008"))) 
+g.add((URIRef(obo+"CHMO_0000937"), URIRef(saref+"isMeasuredByDevice"), URIRef(fsmon+"Videometer_0009"))) 
+g.add((URIRef(fsmon+"Videometer_0000"), RDF.type, URIRef(fsmon+"Videometer")))
+g.add((URIRef(fsmon+"Videometer_0001"), RDF.type, URIRef(fsmon+"Videometer")))
+g.add((URIRef(fsmon+"Videometer_0002"), RDF.type, URIRef(fsmon+"Videometer")))
+g.add((URIRef(fsmon+"Videometer_0003"), RDF.type, URIRef(fsmon+"Videometer")))
+g.add((URIRef(fsmon+"Videometer_0004"), RDF.type, URIRef(fsmon+"Videometer")))
+g.add((URIRef(fsmon+"Videometer_0005"), RDF.type, URIRef(fsmon+"Videometer")))
+g.add((URIRef(fsmon+"Videometer_0006"), RDF.type, URIRef(fsmon+"Videometer")))
+g.add((URIRef(fsmon+"Videometer_0007"), RDF.type, URIRef(fsmon+"Videometer")))
+g.add((URIRef(fsmon+"Videometer_0008"), RDF.type, URIRef(fsmon+"Videometer")))
+g.add((URIRef(fsmon+"Videometer_0009"), RDF.type, URIRef(fsmon+"Videometer")))
 g.add((URIRef(sio+"SIO_001109"), URIRef(saref+"relatesToMeasurement"), URIRef(obo+"CHMO_0000937"))) #Mean relatedToMeasurement Reflectance
 g.add((URIRef(sio+"SIO_000770"), URIRef(saref+"relatesToMeasurement"), URIRef(obo+"CHMO_0000937"))) #Std relatedToMeasurement Reflectance
 g.add((URIRef(obo+"CHMO_0000937"), URIRef(saref+"relatesToProperty"), URIRef(sio+"SIO_001109"))) #Reflectance relatesToProperty Mean 
@@ -97,6 +118,7 @@ for index, row in df[["Sample_ID"]].iterrows(): #iter rows of first column, get 
       g.add((URIRef(fsmon+sample), URIRef(fsmon+"hasBatchNumber"), Literal(batch_n)))
       g.add((URIRef(fsmon+sample), URIRef(fsmon+"time"), Literal(time)))
       g.add((URIRef(fsmon+sample), URIRef(fsmon+"hasAdditionalID"), Literal(aId)))    
+      g.add((URIRef(fsmon+sample), URIRef(fsmon+"hasPackageType"), Literal(package_type)))      
     g.add((URIRef(fsmon+sample), URIRef(saref+"hasMeasurement"), URIRef(obo+"CHMO_0000937"))) 
     g.add((URIRef(fsmon+sample), URIRef(saref+"hasProperty"), URIRef(sio+"SIO_001109"))) #example: 0C_0h_air_a_b1 hasProperty Mean
     g.add((URIRef(fsmon+sample), URIRef(saref+"hasProperty"), URIRef(sio+"SIO_000770"))) #example: 0C_0h_air_a_b1 hasProperty StandardDeviation

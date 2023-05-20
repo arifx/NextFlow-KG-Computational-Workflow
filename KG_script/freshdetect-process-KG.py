@@ -30,6 +30,7 @@ inp = input_path.split("/")
 dataset_name = inp[-1]
 folder = inp[:-1]
 file_uri = input_path.replace(" ","_")
+file_uri = file_uri.replace("/content/drive/MyDrive/23_FoodSafety/dataset", "FSM_fileRepository")
 g = Graph()
 g.bind("saref", saref)
 g.bind("om2", om2)
@@ -86,11 +87,31 @@ for index, row in df[["Sample_ID"]].iterrows(): #iter rows of first column, get 
       g.add((URIRef(fsmon+sample), URIRef(fsmon+"hasTemperature"), Literal(temperature)))
       g.add((URIRef(fsmon+sample), URIRef(fsmon+"time"), Literal(time)))
       g.add((URIRef(fsmon+sample), URIRef(fsmon+"hasAdditionalID"), Literal(aId)))
+      g.add((URIRef(fsmon+sample), URIRef(fsmon+"hasPackageType"), Literal(package_type)))
     g.add((URIRef(fsmon+sample), URIRef(saref+"hasProperty"), URIRef(om2+"Wavelength")))
     if "TVC" in dataset_name.replace(" ","_"):
        g.add((URIRef(fsmon+sample), URIRef(saref+"hasProperty"), URIRef(om2+"ViableCount")))
 
-g.add((URIRef(obo+"CHMO_0000801"), URIRef(saref+"isMeasuredByDevice"), URIRef(fsmon+"FreshDetectBFD-100"))) #Absorbance is measured by Jasco
+g.add((URIRef(obo+"CHMO_0000801"), URIRef(saref+"isMeasuredByDevice"), URIRef(fsmon+"FreshDetectBFD-100-0000"))) #Absorbance 
+g.add((URIRef(obo+"CHMO_0000801"), URIRef(saref+"isMeasuredByDevice"), URIRef(fsmon+"FreshDetectBFD-100-0001")))
+g.add((URIRef(obo+"CHMO_0000801"), URIRef(saref+"isMeasuredByDevice"), URIRef(fsmon+"FreshDetectBFD-100-0002")))
+g.add((URIRef(obo+"CHMO_0000801"), URIRef(saref+"isMeasuredByDevice"), URIRef(fsmon+"FreshDetectBFD-100-0003")))
+g.add((URIRef(obo+"CHMO_0000801"), URIRef(saref+"isMeasuredByDevice"), URIRef(fsmon+"FreshDetectBFD-100-0004")))
+g.add((URIRef(obo+"CHMO_0000801"), URIRef(saref+"isMeasuredByDevice"), URIRef(fsmon+"FreshDetectBFD-100-0005")))
+g.add((URIRef(obo+"CHMO_0000801"), URIRef(saref+"isMeasuredByDevice"), URIRef(fsmon+"FreshDetectBFD-100-0006")))
+g.add((URIRef(obo+"CHMO_0000801"), URIRef(saref+"isMeasuredByDevice"), URIRef(fsmon+"FreshDetectBFD-100-0007")))
+g.add((URIRef(obo+"CHMO_0000801"), URIRef(saref+"isMeasuredByDevice"), URIRef(fsmon+"FreshDetectBFD-100-0008")))
+g.add((URIRef(obo+"CHMO_0000801"), URIRef(saref+"isMeasuredByDevice"), URIRef(fsmon+"FreshDetectBFD-100-0009")))
+g.add((URIRef(fsmon+"FreshDetectBFD-100-0000"), RDF.type, URIRef(fsmon+"FreshDetectBFD-100")))
+g.add((URIRef(fsmon+"FreshDetectBFD-100-0001"), RDF.type, URIRef(fsmon+"FreshDetectBFD-100")))
+g.add((URIRef(fsmon+"FreshDetectBFD-100-0002"), RDF.type, URIRef(fsmon+"FreshDetectBFD-100")))
+g.add((URIRef(fsmon+"FreshDetectBFD-100-0003"), RDF.type, URIRef(fsmon+"FreshDetectBFD-100")))
+g.add((URIRef(fsmon+"FreshDetectBFD-100-0004"), RDF.type, URIRef(fsmon+"FreshDetectBFD-100")))
+g.add((URIRef(fsmon+"FreshDetectBFD-100-0005"), RDF.type, URIRef(fsmon+"FreshDetectBFD-100")))
+g.add((URIRef(fsmon+"FreshDetectBFD-100-0006"), RDF.type, URIRef(fsmon+"FreshDetectBFD-100")))
+g.add((URIRef(fsmon+"FreshDetectBFD-100-0007"), RDF.type, URIRef(fsmon+"FreshDetectBFD-100")))
+g.add((URIRef(fsmon+"FreshDetectBFD-100-0008"), RDF.type, URIRef(fsmon+"FreshDetectBFD-100")))
+g.add((URIRef(fsmon+"FreshDetectBFD-100-0009"), RDF.type, URIRef(fsmon+"FreshDetectBFD-100")))
 g.add((URIRef(fsmon+"FreshDetectBFD-100"), URIRef(fsmon+"hasSensorType"), URIRef(fsmon+sensor)))
 g.add((URIRef(om2+"Wavelength"), URIRef(saref+"relatesToMeasurement"), URIRef(obo+"CHMO_0000801"))) #Wavelength relatedToMeasurement Absorbance
 g.add((URIRef(obo+"CHMO_0000801"), URIRef(saref+"relatesToProperty"), URIRef(om2+"Wavelength"))) #Absorbance relatesToProperty Wavelength 

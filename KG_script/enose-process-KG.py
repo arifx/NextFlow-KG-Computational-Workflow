@@ -30,6 +30,7 @@ inp = input_path.split("/")
 dataset_name = inp[-1]
 folder = inp[:-1]
 file_uri = input_path.replace(" ","_")
+file_uri = file_uri.replace("/content/drive/MyDrive/23_FoodSafety/dataset", "FSM_fileRepository")
 g = Graph()
 g.bind("saref", saref)
 g.bind("om2", om2)
@@ -85,6 +86,7 @@ for index, row in df[["Sample_ID"]].iterrows(): #iter rows of first column, get 
       g.add((URIRef(fsmon+sample), URIRef(fsmon+"hasTemperature"), Literal(temperature)))
       g.add((URIRef(fsmon+sample), URIRef(fsmon+"time"), Literal(time)))
       g.add((URIRef(fsmon+sample), URIRef(fsmon+"hasAdditionalID"), Literal(aId)))
+      g.add((URIRef(fsmon+sample), URIRef(fsmon+"hasPackageType"), Literal(package_type)))
     g.add((URIRef(fsmon+sample), URIRef(saref+"hasProperty"), URIRef(obo+'CHEBI_63248')))
     g.add((URIRef(obo+'CHEBI_63248'), RDFS.label, Literal("oxidising agent")))
     g.add((URIRef(fsmon+sample), URIRef(saref+"hasProperty"), URIRef(obo+'CHEBI_16236')))
@@ -138,7 +140,16 @@ for col_index, column in enumerate(df.columns[1:]): # get column name
     elif column == "PA/2":
         g.add((URIRef(fsmon+column), URIRef(saref+"detectProperty"), URIRef(obo+'CHEBI_16134')))
 
-g.add((URIRef(fsmon+'Fox-3000'), RDF.type, URIRef(fsmon+"Fox3000")))
+g.add((URIRef(fsmon+'Fox-3000-0000'), RDF.type, URIRef(fsmon+"Fox3000")))
+g.add((URIRef(fsmon+'Fox-3000-0001'), RDF.type, URIRef(fsmon+"Fox3000")))
+g.add((URIRef(fsmon+'Fox-3000-0002'), RDF.type, URIRef(fsmon+"Fox3000")))
+g.add((URIRef(fsmon+'Fox-3000-0003'), RDF.type, URIRef(fsmon+"Fox3000")))
+g.add((URIRef(fsmon+'Fox-3000-0004'), RDF.type, URIRef(fsmon+"Fox3000")))
+g.add((URIRef(fsmon+'Fox-3000-0005'), RDF.type, URIRef(fsmon+"Fox3000")))
+g.add((URIRef(fsmon+'Fox-3000-0006'), RDF.type, URIRef(fsmon+"Fox3000")))
+g.add((URIRef(fsmon+'Fox-3000-0007'), RDF.type, URIRef(fsmon+"Fox3000")))
+g.add((URIRef(fsmon+'Fox-3000-0008'), RDF.type, URIRef(fsmon+"Fox3000")))
+g.add((URIRef(fsmon+'Fox-3000-0009'), RDF.type, URIRef(fsmon+"Fox3000")))
 if df.columns[1:][-1] == "TVC":
     g.add((URIRef(fsmon+str(df.columns[1:][-1])), RDF.type, URIRef(om2+"ViableCount")))
 
