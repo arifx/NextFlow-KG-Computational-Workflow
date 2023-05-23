@@ -21,7 +21,7 @@ process runKGProcess {
       echo 'script executing...'
       echo \$(pwd)
       find "$input_folder" -type f | while read -r file; do
-        if [[ "\$file" == *"MSI"* ]]; then
+        if [[ "\$file" == *"MSI"* ]]&&[[ "\$file" != *"MSIF"* ]]; then
           python3 $scriptFile --input "\$file" --output "${runKG_output_folder}"
         fi
       done
@@ -42,7 +42,7 @@ process mergeKG {
   """
     input_files=""
     while IFS= read -r -d '' file; do
-      if [[ "\$file" == *"MSI"* ]]; then
+      if [[ "\$file" == *"MSI"* ]]&&[[ "\$file" != *"MSIF"* ]]; then
         # Add file to the input_files variable
         input_files+="\"\$file\" "
       fi
