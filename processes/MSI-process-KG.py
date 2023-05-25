@@ -1,3 +1,4 @@
+import sys
 import pandas as pd #for handling csv and csv contents
 from rdflib import Graph, Literal, RDF, URIRef, Namespace, BNode, OWL, RDFS #basic RDF handling
 from rdflib.namespace import FOAF , XSD #most common namespaces
@@ -10,11 +11,14 @@ parser.add_argument("--output", dest="output_path", help="Path to output file")
 args = parser.parse_args()
 input_path = args.input_path
 output_path = args.output_path
+try:
+  if "xlsx" in input_path: 
+    df = pd.read_excel(input_path)
+  else:
+    df = pd.read_csv(input_path)
+except:
+  sys.exit("problem with file")  
 
-if "xlsx" in input_path: 
-  df = pd.read_excel(input_path)
-else:
-  df = pd.read_csv(input_path)
 print("input:"+str(input_path)+"output:"+str(output_path))
 cols = df.columns
 new_cols = [column.replace(" ", "_") for column in df.columns]
