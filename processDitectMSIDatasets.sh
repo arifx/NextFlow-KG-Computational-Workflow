@@ -2,7 +2,7 @@ curl -s https://get.nextflow.io | bash
 sudo mv nextflow /usr/local/bin/
 nextflow -version
 
-pip install requirements.txt
+pip install -r requirements.txt
 mkdir result/
 mkdir result/KG
 
