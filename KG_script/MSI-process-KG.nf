@@ -20,9 +20,11 @@ process runKGProcess {
     """
       echo 'script executing...'
       echo \$(pwd)
+      echo "EXTRACTING FAIRification Data from following files:"
       find "$input_folder" -type f | while read -r file; do
         if [[ "\$file" == *"MSI"* ]]&&[[ "\$file" != *"MSIF"* ]]; then
           python3 $scriptFile --input "\$file" --output "${runKG_output_folder}"
+          echo "FILE:"+$scriptFile
         fi
       done
     """
