@@ -1,7 +1,8 @@
 curl -s https://get.nextflow.io | bash
 sudo mv nextflow /usr/local/bin/
 nextflow -version
-pip install rdflib
+
+pip install requirements.txt
 mkdir result/
 mkdir result/KG
 

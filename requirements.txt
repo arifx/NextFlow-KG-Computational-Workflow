@@ -1,3 +1,5 @@
 openpyxl
 rdflib
+pandas
+
 
