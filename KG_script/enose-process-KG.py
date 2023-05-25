@@ -10,11 +10,12 @@ parser.add_argument("--output", dest="output_path", help="Path to output file")
 args = parser.parse_args()
 input_path = args.input_path
 output_path = args.output_path
+
 try:
     if "xlsx" in input_path: 
-    df = pd.read_excel(input_path)
+        df = pd.read_excel(input_path)
     else:
-    df = pd.read_csv(input_path)
+        df = pd.read_csv(input_path)
 
     df.rename(columns={df.columns[0]: "Sample_ID"}, inplace=True)
 
