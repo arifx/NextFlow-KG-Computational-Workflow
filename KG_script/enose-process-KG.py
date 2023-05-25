@@ -65,9 +65,9 @@ try:
     g.add((URIRef(fsmon+"Maastricht"), URIRef(fsmon+"hasLatitude"), Literal("38.11257")))
     g.add((URIRef(fsmon+"Maastricht"), URIRef(fsmon+"hasLongitude"), Literal("23.27307")))
     if "chicken" in dataset_name:
-    g.add((URIRef(fsmon+"chicken_thigh"), RDF.type, URIRef(obo+"FOODON_03400361"))) #sample type
+        g.add((URIRef(fsmon+"chicken_thigh"), RDF.type, URIRef(obo+"FOODON_03400361"))) #sample type
     else:
-    g.add((URIRef(fsmon+"minced_beef"), RDF.type, URIRef(obo+"FOODON_03400361")))
+        g.add((URIRef(fsmon+"minced_beef"), RDF.type, URIRef(obo+"FOODON_03400361")))
 
     for index, row in df[["Sample_ID"]].iterrows(): #iter rows of first column, get sampleId
         sample = row['Sample_ID']
