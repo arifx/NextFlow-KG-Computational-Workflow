@@ -1,5 +1,5 @@
 curl -s https://get.nextflow.io | bash
-mv nextflow /usr/local/bin/
+sudo mv nextflow /usr/local/bin/
 nextflow -version
 pip install rdflib
 mkdir result/
