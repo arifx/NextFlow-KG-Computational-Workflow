@@ -11,10 +11,14 @@ args = parser.parse_args()
 input_path = args.input_path
 output_path = args.output_path
 
-if "xlsx" in input_path: 
-  df = pd.read_excel(input_path)
-else:
-  df = pd.read_csv(input_path)
+try:
+  if "xlsx" in input_path: 
+    df = pd.read_excel(input_path)
+  else:
+    df = pd.read_csv(input_path)
+except:
+  sys.exit("problem with file")  
+
 print("input:"+str(input_path)+"output:"+str(output_path))
 cols = df.columns
 new_cols = [column.replace(" ", "_") for column in df.columns]
