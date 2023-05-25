@@ -1,5 +1,5 @@
 openpyxl
 rdflib
-pandas
+pandas==1.5.3
 
 
