@@ -15,7 +15,7 @@ if "xlsx" in input_path:
   df = pd.read_excel(input_path)
 else:
   df = pd.read_csv(input_path)
-
+print("input:"+str(input_path)+"output:"+str(output_path))
 cols = df.columns
 new_cols = [column.replace(" ", "_") for column in df.columns]
 rename_cols = dict(zip(cols, new_cols))
