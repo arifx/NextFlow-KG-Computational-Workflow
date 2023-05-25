@@ -1,5 +1,5 @@
-openpyxl
-rdflib
+openpyxl==
+rdflib==6.2.3
 pandas==1.5.3
 
 
