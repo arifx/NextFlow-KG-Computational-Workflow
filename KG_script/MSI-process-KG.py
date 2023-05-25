@@ -15,7 +15,7 @@ try:
   if "xlsx" in input_path: 
     df = pd.read_excel(input_path)
   else:
-    df = pd.read_csv(input_path, ,encoding='utf-8')
+    df = pd.read_csv(input_path, encoding='utf-8')
 except:
   sys.exit("problem with file")  
 
