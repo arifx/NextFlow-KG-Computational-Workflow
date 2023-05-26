@@ -13,6 +13,7 @@ args = parser.parse_args()
 input_path = args.input_path
 output_path = args.output_path
 
+
 g = Graph()
 g.parse(input_path)
 

@@ -7,6 +7,7 @@ Original file is located at
     https://colab.research.google.com/drive/1scRHstH3Jm7SkGKuW5XomV5ZkWY4tJ0L
 """
 
+
 import pandas as pd #for handling csv and csv contents
 from rdflib import Graph, Literal, RDF, URIRef, Namespace, BNode, OWL,RDFS #basic RDF handling
 from rdflib.namespace import FOAF , XSD #most common namespaces

@@ -6,6 +6,7 @@ script_dir = "${baseDir}/${params.script_dir}"
 copy_output_path = "${baseDir}/${params.copy_output_path}"
 
 
+
 process mergeKG {
   label 'cleanup_enabled'
   input:

@@ -22,6 +22,7 @@ process runQueryProcess {
     """
 }
 
+
 process copyFile {
   label 'cleanup_enabled'
   input:
