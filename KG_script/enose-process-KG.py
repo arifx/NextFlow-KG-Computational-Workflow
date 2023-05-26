@@ -113,7 +113,7 @@ try:
         g.add((URIRef(fsmon+sample), URIRef(saref+"hasProperty"), URIRef(obo+'CHEBI_16134')))
         g.add((URIRef(obo+'CHEBI_16134'), RDFS.label, Literal("Ammonia")))
         if "TVC" in dataset_name.replace(" ","_"):
-        g.add((URIRef(fsmon+sample), URIRef(saref+"hasProperty"), URIRef(om2+"ViableCount")))
+            g.add((URIRef(fsmon+sample), URIRef(saref+"hasProperty"), URIRef(om2+"ViableCount")))
 
     for col_index, column in enumerate(df.columns[1:]): # get column name
         g.add((URIRef(fsmon+'Fox-3000'), URIRef(fsmon+'hasSensorType'), URIRef(fsmon+column)))
