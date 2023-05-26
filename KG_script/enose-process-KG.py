@@ -79,15 +79,15 @@ try:
         g.add((URIRef(obo+"NCIT_C42790"), URIRef(fsmon+"isPerformedOn"), URIRef(fsmon+sample)))
         g.add((URIRef(fsmon+sample), URIRef(fsmon+"hasSampleId"), Literal(str(sample))))
         if "Adulteration" not in file_uri:
-        feature = sample.split("_")
-        temperature = feature[0]
-        time = feature[1]
-        package_type = feature[2]
-        aId = feature[3]
-        g.add((URIRef(fsmon+sample), URIRef(fsmon+"hasTemperature"), Literal(temperature)))
-        g.add((URIRef(fsmon+sample), URIRef(fsmon+"time"), Literal(time)))
-        g.add((URIRef(fsmon+sample), URIRef(fsmon+"hasAdditionalID"), Literal(aId)))
-        g.add((URIRef(fsmon+sample), URIRef(fsmon+"hasPackageType"), Literal(package_type)))
+            feature = sample.split("_")
+            temperature = feature[0]
+            time = feature[1]
+            package_type = feature[2]
+            aId = feature[3]
+            g.add((URIRef(fsmon+sample), URIRef(fsmon+"hasTemperature"), Literal(temperature)))
+            g.add((URIRef(fsmon+sample), URIRef(fsmon+"time"), Literal(time)))
+            g.add((URIRef(fsmon+sample), URIRef(fsmon+"hasAdditionalID"), Literal(aId)))
+            g.add((URIRef(fsmon+sample), URIRef(fsmon+"hasPackageType"), Literal(package_type)))
         g.add((URIRef(fsmon+sample), URIRef(saref+"hasProperty"), URIRef(obo+'CHEBI_63248')))
         g.add((URIRef(obo+'CHEBI_63248'), RDFS.label, Literal("oxidising agent")))
         g.add((URIRef(fsmon+sample), URIRef(saref+"hasProperty"), URIRef(obo+'CHEBI_16236')))
