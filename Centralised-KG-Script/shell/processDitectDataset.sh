@@ -8,7 +8,7 @@ mkdir ${3}/result/KG
 mkdir ${3}/result/KG/MSI
 mkdir '../nextflow-work'
 
-nextflow run ./all-process-KG.nf \
+nextflow run ./workflows/all-process-KG.nf \
 -work-dir '../nextflow-work' \
 --input_file ${2} \
 --runKG_output_dir ${3}/result/KG/MSI/ \
