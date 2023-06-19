@@ -1,39 +1,26 @@
 nextflow.enable.dsl=2
-input_dir = params.input_dir
+input_path = params.input_path
 query_output_dir = params.query_output_dir
 
 process runQueryProcess {
   label 'cleanup_enabled'
+  publishDir "${query_output_dir}", mode: 'copy'
   input:
-  val inputDir
-
+  path inputPath
   output:
-  val "${query_output_dir}"
+  path 'temp/output'
 
   script:
     """
     echo 'script executing...'
     echo \$(pwd)
-    query.py --input "${inputDir}" --output "${query_output_dir}"
+    mkdir --parent temp/output
+    query.py --input $inputPath --output temp/output
+    touch temp/test
     """
 }
 
-
-process copyFile {
-  label 'cleanup_enabled'
-  input:
-  val queryResultfile
-  val fileName
-
-  script:
-  """
-    cp -r ${queryResultfile}/. ${fileName}/.
-  """
-}
-
 workflow {
-  data = input_folder
-  script_file = script_dir
-  result = runQueryProcess(data, script_file)
-  copyFile(result, copy_output_path)
+  data = channel.fromPath(input_path)
+  runQueryProcess(data)
 }
